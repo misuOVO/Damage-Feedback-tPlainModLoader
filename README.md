@@ -1,6 +1,6 @@
-# HP Awareness — tPlainModLoader 移植
+# 受伤反馈 — tPlainModLoader 移植
 
-把 tModLoader 客户端 QoL 模组 **HP Awareness**（作者 Core）移植到 **tPlainModLoader / Terraria 1.4.5.8**。
+把 tModLoader 客户端 QoL 模组 **HP Awareness**（作者 Core）移植到 **tPlainModLoader / Terraria 1.4.5.8**，版本 1.0.0。
 
 原模组：https://github.com/CoreMod/HP-Awareness
 （本项目是运行时 Harmony 补丁版，不依赖 tModLoader。）

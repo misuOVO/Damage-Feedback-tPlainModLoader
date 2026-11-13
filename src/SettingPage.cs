@@ -70,7 +70,7 @@ namespace HPAware
     public class HPAwareSetting : ModSetting
     {
         public override string Name => "HPAware";
-        public override string Title => "HP Awareness";
+        public override string Title => "受伤反馈";
         public override string FilePath => "config.json";
         public override bool HasUI => true;
         public override Type DataType => typeof(PluginConfig);
