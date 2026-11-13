@@ -1,0 +1,7 @@
+{
+  "key": "Replica.HPAware",
+  "version": "1.0.6.0",
+  "isEnable": true,
+  "dllPath": "HPAware.dll",
+  "frontModKeys": null
+}
