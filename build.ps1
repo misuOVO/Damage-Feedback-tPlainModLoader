@@ -1,4 +1,4 @@
-# Build the HPAware port for tPlainModLoader / Terraria 1.4.5.8
+﻿# Build the HPAware port for tPlainModLoader / Terraria 1.4.5.8
 #
 # Usage: powershell -ExecutionPolicy Bypass -File .\build.ps1
 
@@ -12,7 +12,7 @@ $root    = Split-Path -Parent $MyInvocation.MyCommand.Path
 $srcDir  = Join-Path $root 'src'
 $modTpl  = Join-Path $root 'mod'
 $outDir  = Join-Path $root 'dist'
-$gameDir = 'D:\steam\steamapps\common\Terraria'
+$gameDir = 'E:\SteamLibrary\steamapps\common\Terraria'
 $modsDir = Join-Path $gameDir 'Mods\HPAware'
 $modName = 'HPAware'
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Terraria.UI;
 using tContentPatch;
 using tContentPatch.Content.UI;
-using tContentPatch.Content.UI.ModSet;
+using tContentPatch.Content.UI.Item1;
 
 namespace HPAware
 {
@@ -108,8 +108,8 @@ namespace HPAware
         private UIItemSwitch Switch(string label, Func<bool> get, Action<bool> set)
         {
             UIItemSwitch item = new UIItemSwitch(null, label);
-            item.SetVal(get());
-            item.OnValUpdate = v =>
+            item.OnGetIsChecked = get;
+            item.OnSetIsChecked = v =>
             {
                 set(v);
                 Commit();
@@ -117,28 +117,36 @@ namespace HPAware
             return item;
         }
 
-        private UIItemValueSlider Slider(string label, float min, float max, Func<float> get, Action<float> set, bool isInt = false)
+        private UIElement Slider(string label, float min, float max, Func<float> get, Action<float> set, bool isInt = false)
         {
-            UIItemValueSlider item = isInt
-                ? new UIItemValueSlider((int)min, (int)max, null, label)
-                : new UIItemValueSlider(min, max, null, label);
-
-            // 显示只保留 1 位小数 / 整数，避免 0.4482759 这种数字
-            item.FloatToString = v => isInt ? v.ToString("0") : v.ToString("0.0");
-
-            item.SetVal(get());
-            item.OnValUpdate = v =>
+            if (isInt)
             {
-                set(isInt ? (float)Math.Round(v) : (float)Math.Round(v, 1));
+                UIItemValueSliderInt item = new UIItemValueSliderInt((int)min, (int)max, null, label);
+                item.ValueToString = v => v.ToString("0");
+                item.OnGetValue = () => (int)Math.Round(get());
+                item.OnSetValue = v =>
+                {
+                    set(v);
+                    Commit();
+                };
+                return item;
+            }
+
+            UIItemValueSliderFloat f = new UIItemValueSliderFloat(min, max, null, label);
+            f.ValueToString = v => v.ToString("0.0");
+            f.OnGetValue = get;
+            f.OnSetValue = v =>
+            {
+                set((float)Math.Round(v, 1));
                 Commit();
             };
-            return item;
+            return f;
         }
 
         public override UIElement GetUI()
         {
             // 用加载器自带的滚动控件：右上角有滚动条，内容不会超出面板
-            UIScrollViewer2 root = new UIScrollViewer2();
+            UIScrollViewer2 root = new UIScrollViewer2(false);
             root.Width.Precent = 1f;
             root.Height.Precent = 1f;
             root.ItemMargin = 4;
