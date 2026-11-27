@@ -1,6 +1,6 @@
 # 受伤反馈 — tPlainModLoader 移植
 
-把 tModLoader 客户端 QoL 模组 **HP Awareness**（作者 Core）移植到 **tPlainModLoader / Terraria 1.4.5.8**，版本 1.0.0。
+把 tModLoader 客户端 QoL 模组 **HP Awareness**（作者 Core）移植到 **tPlainModLoader / Terraria 1.4.6.1**，版本 1.0.1。
 
 原模组：https://github.com/CoreMod/HP-Awareness
 （本项目是运行时 Harmony 补丁版，不依赖 tModLoader。）
@@ -22,7 +22,7 @@
 
 ## 安装
 
-1. 安装 tPlainModLoader（Terraria 1.4.5.8）；
+1. 安装 tPlainModLoader（Terraria 1.4.6.1）；
 2. 把 `HPAware.dll`、`info.json`、`loadConfig.json`、`ico.png` 放进：
    ```
    <Terraria>/Mods/HPAware/
